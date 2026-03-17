@@ -1,34 +1,96 @@
-# streakly
+# Streakly
 
-An Electron application with React and TypeScript
+A desktop habit tracker built with Electron + React (TypeScript).
 
-## Recommended IDE Setup
+Track your daily habits, maintain streaks, and visualise your progress over the past 7 days — all from a native desktop app.
 
-- [VSCode](https://code.visualstudio.com/) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+---
 
-## Project Setup
+## Features
 
-### Install
+- Add habits with a custom icon and colour
+- Mark habits as done each day
+- 7-day completion grid per habit
+- Streak counter showing your current daily streak
+- Stats bar showing today's progress and best streak
+- Auto-update support via `electron-updater`
+
+---
+
+## Tech Stack
+
+- [Electron](https://www.electronjs.org/) — desktop shell
+- [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) — UI
+- [electron-vite](https://electron-vite.org/) — build tooling
+- [date-fns](https://date-fns.org/) — date formatting
+- [electron-updater](https://www.electron.build/auto-update) — auto-update
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js v18 or later
+- npm
+- Git
+
+### Install dependencies
 
 ```bash
-$ npm install
+npm install
 ```
 
-### Development
+### Run in development mode
 
 ```bash
-$ npm run dev
+npm run dev
 ```
 
-### Build
+### Build the installer
 
 ```bash
-# For windows
-$ npm run build:win
+# Windows
+npm run build:win
 
-# For macOS
-$ npm run build:mac
-
-# For Linux
-$ npm run build:linux
+# macOS
+npm run build:mac
 ```
+
+The installer will be output to the `dist-packages/` folder.
+
+---
+
+## Project Structure
+
+```
+streakly/
+├── src/
+│   ├── main/               # Electron main process
+│   │   └── index.ts        # App lifecycle + auto-updater
+│   ├── preload/            # Preload scripts
+│   └── renderer/           # React app
+│       └── src/
+│           ├── App.tsx
+│           ├── App.css
+│           └── components/
+│               ├── HabitCard.tsx
+│               ├── HabitForm.tsx
+│               └── StatsBar.tsx
+├── resources/              # App icons
+├── build/                  # electron-builder resources
+├── electron-builder.yml    # Packaging configuration
+└── package.json
+```
+
+---
+
+## Releases
+
+See the [Releases](https://github.com/jasmineteng04-dot/streakly/releases) page for downloadable installers.
+
+---
+
+## License
+
+Copyright 2025
