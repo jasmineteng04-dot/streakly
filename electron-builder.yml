@@ -18,6 +18,8 @@ win:
       arch: [x64]
     - target: msi # produces an enterprise .msi
       arch: [x64]
+    - target: dir # produces the unpacked folder
+      arch: [x64]
 
 nsis:
   oneClick: false # show the install wizard
