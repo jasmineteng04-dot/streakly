@@ -1,0 +1,17 @@
+/* Reset electron-vite defaults */
+body {
+  display: block;
+  overflow: auto;
+  background-image: none;
+  user-select: auto;
+  min-height: 100vh;
+}
+
+#root {
+  display: block;
+  align-items: unset;
+  justify-content: unset;
+  flex-direction: unset;
+  margin-bottom: 0;
+  min-height: 100vh;
+}

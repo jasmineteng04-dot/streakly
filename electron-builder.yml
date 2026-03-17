@@ -1,0 +1,50 @@
+# electron-builder.yml
+appId: com.tengyengming.streakly
+productName: Streakly
+copyright: "Copyright 2025"
+
+directories:
+  buildResources: build
+  output: dist-packages # installer files go here
+
+files:
+  - out/**/*
+
+# Windows
+win:
+  icon: resources/icons/win/icon.ico
+  target:
+    - target: nsis # produces a .exe setup wizard
+      arch: [x64]
+    - target: msi # produces an enterprise .msi
+      arch: [x64]
+
+nsis:
+  oneClick: false # show the install wizard
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: "Streakly"
+
+msi:
+  oneClick: false
+  perMachine: false # install per-user, no admin required
+
+# macOS
+mac:
+  icon: resources/icons/mac/icon.icns
+  category: public.app-category.productivity
+  target:
+    - target: dmg
+      arch: [x64, arm64] # Intel and Apple Silicon
+
+dmg:
+  window:
+    width: 540
+    height: 380
+
+# GitHub publishing (required for auto-update)
+publish:
+  provider: github
+  owner: jasmineteng04-dot
+  repo: streakly
