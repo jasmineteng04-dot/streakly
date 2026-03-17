@@ -18,6 +18,8 @@ win:
       arch: [x64]
     - target: msi # produces an enterprise .msi
       arch: [x64]
+    - target: dir # produces the unpacked folder
+      arch: [x64]
 
 nsis:
   oneClick: false # show the install wizard
@@ -25,10 +27,12 @@ nsis:
   createDesktopShortcut: true
   createStartMenuShortcut: true
   shortcutName: "Streakly"
+  artifactName: "Streakly-Setup-${version}.exe"
 
 msi:
   oneClick: false
   perMachine: false # install per-user, no admin required
+  artifactName: "Streakly-${version}.msi"
 
 # macOS
 mac:

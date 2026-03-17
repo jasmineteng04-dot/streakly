@@ -42,10 +42,10 @@ function setupAutoUpdater(): void {
     dialog
       .showMessageBox({
         type: 'info',
-        title: 'Update Available 🎉',
+        title: 'Update Available',
         message: `Streakly ${info.version} is ready!`,
         detail: 'Download and install the latest version now?',
-        buttons: ['Download & Install', 'Later'],
+        buttons: ['Download and Install', 'Later'],
         defaultId: 0
       })
       .then(({ response }) => {
