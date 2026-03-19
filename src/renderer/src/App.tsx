@@ -132,7 +132,10 @@ export default function App(): JSX.Element {
         <div className="header-top">
           <div>
             <h1 className="app-title">Streakly</h1>
-            <p className="app-date">{dateLabel}</p>
+            <p className="app-subtitle">Build better habits, one day at a time</p>
+            <p className="app-date">
+              {dateLabel} <span className="version-badge">v1.1.0</span>
+            </p>
           </div>
           <button className="add-btn" onClick={() => setShowForm(true)} aria-label="Add habit">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">

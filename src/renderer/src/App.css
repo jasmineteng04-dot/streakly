@@ -5,20 +5,22 @@
 :root {
   --font: 'DM Sans', system-ui, sans-serif;
   --font-mono: 'DM Mono', monospace;
-  --bg: #f5f4f0;
-  --card-bg: #ffffff;
-  --text: #1c1c1a;
-  --muted: #888882;
-  --border: #e2e0da;
-  --border-strong: #ccc9c0;
+  --bg: #111113;
+  --card-bg: #1c1c1f;
+  --text: #f0efe9;
+  --muted: #8a8a94;
+  --border: #2a2a2e;
+  --border-strong: #3a3a40;
+  --btn-bg: #2e2e34;
+  --btn-bg-hover: #3a3a42;
 
-  /* Habit accent colors — muted, intentional */
-  --coral-bg: #fdf0ec;   --coral-acc: #d95f3b;  --coral-dark: #a33a1e;
-  --sky-bg:   #ecf3fc;   --sky-acc:   #2e7dd1;  --sky-dark:   #1a4f8a;
-  --lime-bg:  #edf7ed;   --lime-acc:  #3a9e52;  --lime-dark:  #1e5e30;
-  --amber-bg: #fdf6e3;   --amber-acc: #c98a00;  --amber-dark: #7a5200;
-  --violet-bg:#f2eefb;   --violet-acc:#7c4dcc;  --violet-dark:#4a2788;
-  --rose-bg:  #fceef4;   --rose-acc:  #c4366e;  --rose-dark:  #7e1a42;
+  /* Habit accent colors — slightly brighter for dark bg */
+  --coral-bg: #2a1a15;   --coral-acc: #e8714e;  --coral-dark: #f0a080;
+  --sky-bg:   #111e2e;   --sky-acc:   #4a9be8;  --sky-dark:   #82bef5;
+  --lime-bg:  #131f14;   --lime-acc:  #4ab860;  --lime-dark:  #82d494;
+  --amber-bg: #231a08;   --amber-acc: #e0a020;  --amber-dark: #f5c84a;
+  --violet-bg:#1a1228;   --violet-acc:#9b6de8;  --violet-dark:#c4a4f8;
+  --rose-bg:  #251018;   --rose-acc:  #e04d85;  --rose-dark:  #f590b8;
 }
 
 body {
@@ -53,22 +55,44 @@ body {
   margin-bottom: 4px;
 }
 
+.app-subtitle {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
 .app-date {
   font-size: 13px;
   color: var(--muted);
   font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1;
+}
+
+.version-badge {
+  font-size: 10px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  background: var(--coral-acc);
+  color: white;
+  border-radius: 4px;
+  padding: 2px 6px;
+  line-height: 1;
 }
 
 .add-btn {
   display: flex; align-items: center; gap: 7px;
-  background: var(--text);
-  color: #fff; border: none; border-radius: 8px;
+  background: var(--btn-bg);
+  color: var(--text); border: 1px solid var(--border-strong); border-radius: 8px;
   padding: 10px 16px; font-size: 13px; font-weight: 600;
   font-family: var(--font); cursor: pointer;
   transition: background 0.15s;
 }
-.add-btn:hover { background: #333330; }
-.add-btn:active { background: #111110; }
+.add-btn:hover { background: var(--btn-bg-hover); color: var(--text); }
+.add-btn:active { background: #44444e; color: var(--text); }
 
 /* ── Stats bar ── */
 .stats-bar {
@@ -97,7 +121,7 @@ body {
 }
 .progress-fill {
   height: 100%;
-  background: var(--text);
+  background: var(--coral-acc);
   transition: width 0.5s ease;
 }
 
@@ -124,7 +148,7 @@ body {
   position: absolute; top: 0; left: 0; bottom: 0; width: 4px;
   border-radius: 12px 0 0 12px;
 }
-.habit-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+.habit-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
 
 /* Color variants */
 .color-coral  { --acc: var(--coral-acc);  --abg: var(--coral-bg);  --adk: var(--coral-dark); }
@@ -170,7 +194,7 @@ body {
   opacity: 0; display: flex; align-items: center;
 }
 .habit-card:hover .delete-btn { opacity: 1; }
-.delete-btn:hover { color: #c0392b; background: #fdf0ee; }
+.delete-btn:hover { color: #ff6b6b; background: rgba(255,107,107,0.12); }
 
 /* Week grid */
 .week-grid {
@@ -218,7 +242,7 @@ body {
 /* ── Modal ── */
 .modal-overlay {
   position: fixed; inset: 0; z-index: 100;
-  background: rgba(28,28,26,0.45);
+  background: rgba(0,0,0,0.7);
   display: flex; align-items: center; justify-content: center;
   padding: 24px;
 }
@@ -252,9 +276,10 @@ body {
   color: var(--text); outline: none;
   transition: border-color 0.15s;
 }
-.form-input:focus { border-color: var(--text); }
+.form-input:focus { border-color: var(--coral-acc); }
 .form-input::placeholder { color: var(--muted); }
 
+/* Icon picker — SVG icons instead of emoji */
 .icon-grid {
   display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px;
 }
@@ -264,8 +289,8 @@ body {
   transition: all 0.15s; display: flex; align-items: center; justify-content: center;
   color: var(--muted);
 }
-.icon-btn:hover { border-color: var(--border-strong); color: var(--text); background: var(--card-bg); }
-.icon-btn.selected { border-color: var(--text); color: var(--text); background: var(--card-bg); }
+.icon-btn:hover { border-color: var(--border-strong); color: var(--text); background: var(--btn-bg); }
+.icon-btn.selected { border-color: var(--coral-acc); color: var(--coral-acc); background: var(--btn-bg); }
 
 .color-row { display: flex; gap: 8px; }
 .color-swatch {
@@ -289,15 +314,15 @@ body {
   background: transparent; color: var(--muted); font-size: 13px; font-weight: 600;
   font-family: var(--font); cursor: pointer; transition: all 0.15s;
 }
-.cancel-btn:hover { border-color: var(--border-strong); color: var(--text); }
+.cancel-btn:hover { border-color: var(--border-strong); color: var(--text); background: var(--btn-bg); }
 .submit-btn {
   flex: 2; padding: 11px; border: none; border-radius: 8px;
-  background: var(--text);
+  background: var(--coral-acc);
   color: white; font-size: 13px; font-weight: 600;
   font-family: var(--font); cursor: pointer;
   transition: background 0.15s;
 }
-.submit-btn:hover:not(:disabled) { background: #333330; }
+.submit-btn:hover:not(:disabled) { filter: brightness(1.1); }
 .submit-btn:disabled { opacity: 0.35; cursor: not-allowed; }
 
 /* ── Empty state ── */
