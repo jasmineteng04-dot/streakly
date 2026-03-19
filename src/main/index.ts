@@ -45,7 +45,7 @@ function setupAutoUpdater(): void {
         title: 'Update Available 🎉',
         message: `Streakly ${info.version} is ready!`,
         detail: 'Download and install the latest version now?',
-        buttons: ['Download & Install', 'Later'],
+        buttons: ['Download and Install', 'Later'],
         defaultId: 0
       })
       .then(({ response }) => {

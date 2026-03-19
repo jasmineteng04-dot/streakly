@@ -27,10 +27,12 @@ nsis:
   createDesktopShortcut: true
   createStartMenuShortcut: true
   shortcutName: "Streakly"
+  artifactName: "Streakly-Setup-${version}.exe"
 
 msi:
   oneClick: false
   perMachine: false # install per-user, no admin required
+  artifactName: "Streakly-${version}.msi"
 
 # macOS
 mac:
